@@ -9,7 +9,7 @@ import numpy as np
 def curve(x, y):
     return (math.sin(x)*math.sin(y))/(x*y)
 
-size = 10000
+size = 2000
 x = [np.random.uniform(-10, 10) for i in range(0, size)]
 y = [np.random.uniform(-10, 10) for i in range(0, size)]
 z = [curve(x[i], y[i]) for i in range(0, size)]
@@ -29,7 +29,7 @@ mf = [[['gaussmf',{'mean':-8.,'sigma':1}],['gaussmf',{'mean':-3,'sigma':1}],['ga
 
 mfc = amf.membershipfunction.MemFuncs(mf)
 anf = c_anfis.ANFIS(X, Y, mfc)
-anf.trainHybridJangOffLine(epochs=50)
+anf.trainHybridJangOffLine(epochs=30)
 print round(anf.consequents[-1][0],6)
 print round(anf.consequents[-2][0],6)
 print round(anf.fittedValues[9][0],6)
